@@ -1,130 +1,128 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:new_matule/splashScreen.dart';
-import 'package:ui_kit/images.dart';
-import 'package:ui_kit/ui_components/button.dart';
-import 'package:ui_kit/ui_components/input.dart';
+import 'package:new_matule/createPassword.dart';
+import 'package:new_matule/createProfile.dart';
 import 'package:ui_kit/ui_kit.dart';
-import 'package:ui_kit/colors.dart';
-import 'package:ui_kit/typography.dart';
-import 'createProfile.dart';
 
-class Hello extends StatefulWidget{
-
+class Hello extends StatefulWidget {
   @override
   State<Hello> createState() => _helloState();
 }
 
 class _helloState extends State<Hello> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  bool _isFormFilled = false;
+  String email = '';
+  String password = '';
 
 
-  @override
-  void initState() {
-    super.initState();
-    _emailController.addListener(_updateButtonState);
-    _passwordController.addListener(_updateButtonState);
+  bool get isValidEmail {
+    final pattern = RegExp(r'^[a-z0-9]+@[a-z0-9]+\.[a-z]{2,}$');
+    return pattern.hasMatch(email);
   }
 
-  void _updateButtonState() {
-    setState(() {
-      _isFormFilled = _emailController.text.isNotEmpty &&
-          _passwordController.text.isNotEmpty;
-    });
-  }
-
+  bool get hasEmailError => email.isNotEmpty && !isValidEmail;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor:  AppColors.white,
-        appBar: AppBar(backgroundColor: AppColors.white),
-        body: Padding(padding: EdgeInsets.all(20),
-          child:  Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                   AppImages.delete(size: 10),
-                  Text(
-                    "Добро пожаловать!",
-                    style: AppTypography.title1ExtraBold,
-                  ),
-                ],
-              ),
+    bool login = email.isNotEmpty && password.isNotEmpty  && isValidEmail;
 
-              SizedBox(height: 24,),
-              Text(
-                "Войдите, чтобы пользоваться функциями приложения",
-                style: AppTypography.textRegular,
-              ),
-              SizedBox(height: 64),
-              Input(
-                hint: "example@mail.com",
-                label: "Вход по E-mail",
-                controller: _emailController,
-              ),
-              SizedBox(height: 14,),
-              Input(
-                controller: _passwordController,
-                label: "Пароль",
-                isPassword: true,
-              ),
-              SizedBox(height: 14,),
-              MyButton(
-                text: "Далее",
-                onPressed: () {
-                  if (_isFormFilled) {
-                    Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (context) => CreateProfile(),
-                      ),
-                    );
-                  }
-                },
-                minHeight: 56,
-                minWidth: 335,
-                backgroundColor: _isFormFilled
-                    ? AppColors.accent
-                    : AppColors.inputIcon,
-                textColor: AppColors.white,
-              ),
-              SizedBox(height: 15),
-              Center(
-                child: Text(
-                  "Зарегистрироваться",
-                  style: AppTypography.textRegular.copyWith(
-                    color: AppColors.accent,
-                  ),
-                ),
-              ),
-              SizedBox(height: 59,),
-              Column(
+    return Scaffold(
+      backgroundColor: ui.colors.white,
+      body: Padding(
+        padding: EdgeInsets.only(top: 105, left: 20,right: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              " ✋Добро пожаловать!",
+              style: ui.typography.title1ExtraBold,
+            ),
+            SizedBox(height: 24),
+            Text(
+              "   Войдите, чтобы пользоваться функциями приложения",
+              style: ui.typography.textRegular,
+            ),
+            SizedBox(height: 64),
+            Center(
+              child: Column(
                 children: [
-                  Text(
-                    "Или войдите с помощью",
-                    style: AppTypography.textRegular.copyWith(
-                      color: AppColors.inputText,
+                  Input(
+                    hint: "example@mail.ru",
+                    onChanged: (value) => setState(() => email = value),
+                    hasError: hasEmailError,
+                    helperText: hasEmailError
+                        ? 'Email должен быть в формате: name@domenname.ru'
+                        : null,
+                  ),
+                  SizedBox(height: 14),
+                  Input(
+                    label: "Пароль",
+                    isPassword: password.isNotEmpty,
+                    onChanged: (value) {
+                      setState(() {
+                        password = value;
+                      });
+                    },
+                  ),
+                  SizedBox(height: 15),
+
+
+                  if (login)
+                    ui.bigButton.primary(
+                      text: "Далее",
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute<void>(
+                            builder: (context) => CreatePassword(),
+                          ),
+                        );
+                      },
+                      enabled: true,
+                    )
+                  else
+                    ui.bigButton.primary(
+                      text: "Далее",
+                      onPressed: null,
+                      enabled: false,
+                    ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => CreateProfile(),
+                        ),
+                      );
+                    },
+                    child: Text(
+                      "Зарегистрироваться",
+                      style: ui.typography.textRegular.copyWith(
+                        color: ui.colors.accent,
+                      ),
                     ),
                   ),
-                  SizedBox(height: 16),
-                  // login(
-                  //   imagePath:AppImages.vk,
-                  //   text:"c VK" ,
-                  // ),
-                  // SizedBox(height: 16),
-                  // login(
-                  //   imagePath: AppImages.yandex,
-                  //   text:"c Yandex" ,
-                  // ),
-                ],
-              )
-            ],
-          ),)
+                  SizedBox(height: 59),
 
+                  Column(
+                    children: [
+                      Text(
+                        "Или войдите с помощью",
+                        style: ui.typography.textRegular.copyWith(
+                          color: ui.colors.inputText,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 16),
+                      ui.logo.vk( onPressed: () {},),
+                      SizedBox(height: 16),
+                      ui.logo.yandex( onPressed: () {},),
+                    ],
+                  ),
+                ],
+
+              ),
+            )
+
+          ],
+        ),
+      ),
     );
   }
-
 }

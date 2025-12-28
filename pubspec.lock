@@ -195,11 +195,9 @@ packages:
   ui_kit:
     dependency: "direct main"
     description:
-      path: "packages/ui_kit"
-      ref: ui
-      resolved-ref: eea4a845709ea011bb5a56cb8d7f73ff4a54dd10
-      url: "https://github.com/pffkilm/Matule_x.git"
-    source: git
+      path: "/Users/brics2024/Downloads/matule_x/packages/ui_kit"
+      relative: false
+    source: path
     version: "0.0.1"
   vector_math:
     dependency: transitive
