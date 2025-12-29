@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:new_matule/PasswordCreate.dart';
 import 'package:new_matule/createPassword.dart';
 import 'package:new_matule/createProfile.dart';
 import 'package:ui_kit/ui_kit.dart';
 
-class Hello extends StatefulWidget {
+class Welcome extends StatefulWidget {
   @override
-  State<Hello> createState() => _helloState();
+  State<Welcome> createState() => _helloState();
 }
 
-class _helloState extends State<Hello> {
+class _helloState extends State<Welcome> {
   String email = '';
   String password = '';
 
@@ -25,7 +26,7 @@ class _helloState extends State<Hello> {
     bool login = email.isNotEmpty && password.isNotEmpty  && isValidEmail;
 
     return Scaffold(
-      backgroundColor: ui.colors.white,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.only(top: 105, left: 20,right: 20),
         child: Column(
@@ -71,7 +72,7 @@ class _helloState extends State<Hello> {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute<void>(
-                            builder: (context) => CreatePassword(),
+                            builder: (context) => PasswordCreate(),
                           ),
                         );
                       },

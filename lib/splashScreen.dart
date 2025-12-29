@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:new_matule/PasswordCreate.dart';
 import 'package:new_matule/login.dart';
+import 'package:new_matule/profile.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -16,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // Переход через 5 секунд
     Future.delayed(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) =>  Hello()),
+        MaterialPageRoute(builder: (context) =>  Welcome()),
       );
     });
   }

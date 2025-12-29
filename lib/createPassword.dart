@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_matule/PasswordCreate.dart';
 import 'package:new_matule/splashScreen.dart';
 import 'package:ui_kit/ui_kit.dart';
 
@@ -27,7 +28,7 @@ class _PasswordState extends State<CreatePassword> {
         password1 == password2 &&  isStrongPassword;
 
     return Scaffold(
-      backgroundColor: ui.colors.white,
+      backgroundColor: Colors.white,
       body: Padding(
         padding: EdgeInsets.only(top: 105, left: 20, right: 20),
         child: Column(
@@ -81,7 +82,7 @@ class _PasswordState extends State<CreatePassword> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => SplashScreen(),
+                          builder: (context) => PasswordCreate(),
                         ),
                       );
                     },

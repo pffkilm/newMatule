@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:new_matule/PasswordCreate.dart';
+import 'package:new_matule/createPassword.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CreateProfile extends StatefulWidget {
@@ -31,11 +33,11 @@ class Profile extends State<CreateProfile> {
         birthDate.isNotEmpty &&
         gender.isNotEmpty &&
         email.isNotEmpty &&
-        isValidEmail; // ← ВАЖНО: проверяем валидность email
+        isValidEmail;
 
     return Scaffold(
-      backgroundColor: ui.colors.white,
-      appBar: AppBar(backgroundColor: ui.colors.white),
+      backgroundColor: Colors.white,
+      appBar: AppBar(backgroundColor: Colors.white),
       body: Padding(
         padding: EdgeInsets.all(20),
         child: Column(
@@ -108,7 +110,11 @@ class Profile extends State<CreateProfile> {
               ui.bigButton.primary(
                 text: "Далее",
                 onPressed: () {
-                  print("Создан профиль: $name $middleName $surname");
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => PasswordCreate(),
+                    ),
+                  );
                 },
                 enabled: true,
               ) else
