@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:new_matule/Search.dart';
-import 'package:new_matule/createPassword.dart';
-import 'package:new_matule/profile.dart';
-import 'package:new_matule/splashScreen.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class PasswordCreate extends StatefulWidget {
@@ -47,7 +44,7 @@ class _PasswordState extends State<PasswordCreate> {
     Future.delayed(Duration(milliseconds: 300), () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => Search()), // ← ИЗМЕНИТЕ НА ВАШУ СТРАНИЦУ
+        MaterialPageRoute(builder: (context) => Home()), // ← ИЗМЕНИТЕ НА ВАШУ СТРАНИЦУ
       );
     });
   }

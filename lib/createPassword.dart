@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_matule/PasswordCreate.dart';
-import 'package:new_matule/splashScreen.dart';
+import 'package:new_matule/tabBar.dart';
 import 'package:ui_kit/ui_kit.dart';
 
 class CreatePassword extends StatefulWidget {
@@ -82,7 +82,7 @@ class _PasswordState extends State<CreatePassword> {
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (context) => PasswordCreate(),
+                          builder: (context) => Navigation(),
                         ),
                       );
                     },

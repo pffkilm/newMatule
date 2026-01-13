@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:ui_kit/ui_components/Menu.dart';
 import 'package:ui_kit/ui_kit.dart';
-class Search extends StatefulWidget {
+class Home extends StatefulWidget {
   @override
-  State<Search> createState() => _searchState();
+  State<Home> createState() => _searchState();
 }
 
-class _searchState extends State<Search> {
+class _searchState extends State<Home> {
   int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
    return Scaffold(
      backgroundColor: Colors.white,
-     bottomNavigationBar:  ui.bottomNavigation.create(initialIndex: 0),
+     bottomNavigationBar:  ui.tabBar.create(initialIndex: 0),
      body: Padding(padding: EdgeInsets.only(left: 20, top: 68),
      child: Column(
        crossAxisAlignment: CrossAxisAlignment.stretch,
