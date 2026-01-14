@@ -26,6 +26,7 @@ class _KatalogState extends State<Katalog> {
                       Image.asset("assets/images/profile.png"),
                     ],
                   ),
+                  //
                   const SizedBox(height: 32),
                   SizedBox(
                     height: 48,
