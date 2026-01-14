@@ -13,7 +13,6 @@ class _searchState extends State<Home> {
   Widget build(BuildContext context) {
    return Scaffold(
      backgroundColor: Colors.white,
-     bottomNavigationBar:  ui.tabBar.create(initialIndex: 0),
      body: Padding(padding: EdgeInsets.only(left: 20, top: 68),
      child: Column(
        crossAxisAlignment: CrossAxisAlignment.stretch,

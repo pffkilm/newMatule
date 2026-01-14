@@ -8,8 +8,10 @@ environment:
 
 dependencies:
   ui_kit:
-    path: /Users/brics2024/Downloads/matule_x/packages/ui_kit
-
+    git:
+      url: https://github.com/pffkilm/MatuleS.git
+      ref: ui_fixed
+      path: packages/ui_kit
 
 
   flutter:

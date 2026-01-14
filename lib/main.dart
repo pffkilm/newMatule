@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:new_matule/katalog.dart';
 import 'package:ui_kit/ui_kit.dart';
 import 'package:new_matule/splashScreen.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: Katalog(),
     );
   }
 }

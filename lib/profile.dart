@@ -12,7 +12,6 @@ class _ProfileState extends State<Profile> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-     bottomNavigationBar:  ui.tabBar.create(initialIndex: 3),
       body: Padding(
           padding: EdgeInsets.only(left: 20,top: 76),
 
